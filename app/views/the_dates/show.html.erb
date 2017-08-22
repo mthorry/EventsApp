@@ -1,0 +1,6 @@
+<h1>Events on <%=TheDate.format_date(@date.date_time)%></h1>
+<% TheDate.specific_date(@date.date_time.to_date).each do |date_inst| %>
+<% date_inst.events.each do |event|%>
+<p><%=link_to event.name, event_path(event) %></p>
+<% end %>
+<% end %>

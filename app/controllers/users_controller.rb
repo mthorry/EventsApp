@@ -35,6 +35,14 @@ class UsersController < ApplicationController
     end
   end
 
+def deleteevent
+    @event = Event.find(params[:id])
+    current_user.delete_event(@event)
+    current_user.save
+    redirect_to user_path(current_user)
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

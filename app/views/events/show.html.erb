@@ -2,12 +2,14 @@
 <h2> <%= @event.the_date.date_time %>, <%= @event.address%> </h2>
 <p> <%= @event.description %> </p>
   <br>
-  <h3><%= link_to "Add to my events", %></h3>
+  <h3><%=link_to "Add to My Events", addevent_path, :method => :post %></h3>
+
 <h2>Attending:</h2>
 <ul>
 <% @event.users.each do |user| %>
 <li> <%= link_to user.username, user_path(user) %> </li>
 <%end%>
 </ul>
+
 <p><%=link_to "Edit", edit_event_path(@event) %></p>
 <p><%=link_to "Events", events_path %></p>

@@ -2,9 +2,10 @@
 
 <h2>Here are <%=@user.first_name%>'s upcoming events:</h2>
  <ol>
+
 <% @user.events.each do |event| %>
 
-    <li> <p>Name: <%= link_to event.name, event_path(event) %></p> <p>Date: <%= link_to event.the_date.date, the_date_path(event.the_date) %> </p> <p>Location: <%= link_to event.location.name, location_path(event.location) %></p> <p> <%= link_to 'Remove From My Events', user_path(@user)%></p> <br> </li>
+    <li> <p>Name: <%= link_to event.name, event_path(event) %></p> <p>Date: <%= link_to TheDate.format_date(event.the_date.date_time), the_date_path(event.the_date) %> </p> <p>Location: <%= link_to event.location.name, location_path(event.location) %></p> <p> <%= link_to 'Remove From My Events', deleteevent_path(event), :method => :post%></p> <br> </li>
   <%end%>
     </ol>
 

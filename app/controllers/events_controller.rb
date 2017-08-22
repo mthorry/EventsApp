@@ -36,6 +36,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def addevent
+    @event = Event.find(params[:id])
+    current_user.add_event(@event)
+    current_user.save
+    redirect_to user_path(current_user)
+  end
+
+
   private
 
     def event_params

@@ -5,8 +5,14 @@ class TheDate < ApplicationRecord
     datetime.strftime("%A, %B %d, %Y")
   end
 
- def self.format_time(datetime)
+  def self.format_time(datetime)
     datetime.strftime("%I:%M %p")
+  end
+
+  def self.specific_date(specific_date)
+    TheDate.all.select do |datetime|
+      datetime.date_time.to_date == specific_date
+    end
   end
 
 end

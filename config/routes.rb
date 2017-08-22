@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
+  post '/events/:id', to: 'events#addevent', as: 'addevent'
+  post '/users/:id', to: 'users#deleteevent', as: 'deleteevent'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :events, :categories, :locations, :the_dates, :users
