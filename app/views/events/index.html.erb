@@ -1,0 +1,7 @@
+<h1>All Events</h1>
+<ol>
+<% @events.each do |event|%>
+<li><%= link_to event.name, event_path(event) %>: <%= TheDate.format_date(event.the_date.date_time) %> at <%= TheDate.format_time(event.the_date.date_time) %> </li>
+<%end%>
+</ol>
+<%= link_to "Create New Event", new_event_path %>
