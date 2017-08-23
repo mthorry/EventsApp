@@ -4,7 +4,10 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    # @dates = TheDate.order(:date_time)
+    # @events = Event.ordered_dates(@dates)
+    # @events = Event.order(:the_date_id)
+    @events = Event.most_recent
   end
 
   def new
