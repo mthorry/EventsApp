@@ -24,9 +24,15 @@ User.create(first_name: "Sum Ting", last_name: "Wong", username: "somethingwrong
 TheDate.create(date_time: "2017-10-19 10:30:00")
 TheDate.create(date_time: "2017-10-19 08:30:00")
 TheDate.create(date_time: "2017-10-19 09:30:00")
+TheDate.create(date_time: "2017-10-20 01:30:00")
+TheDate.create(date_time: "2017-10-20 10:30:00")
+TheDate.create(date_time: "2017-10-21 12:30:00")
+TheDate.create(date_time: "2017-10-21 01:30:00")
+TheDate.create(date_time: "2017-10-21 08:30:00")
 
-10.times do
-Event.create(name:"#{Faker::RockBand.name} Concert", address:"#{Faker::Address.street_address}", location_id:"#{Faker::Number.between(1, 8)}", the_date_id:"#{Faker::Number.between(1, 3)}", description:"#{Faker::Lorem.paragraph}")
+
+50.times do
+Event.create(name:"#{Faker::RockBand.name} Concert", address:"#{Faker::Address.street_address}", location_id:"#{Faker::Number.between(1, 8)}", the_date_id:"#{Faker::Number.between(1, 8)}", description:"#{Faker::Lorem.paragraph}")
 end
 
 # Event.create(name: "Eclipse", address: "11 Broadway", location_id: 1, the_date_id: 1, user_id: 1, description: "Marfa single-origin coffee blog direct trade, intelligentsia you probably haven't heard of them irony raw denim migas squid synth letterpress meditation typewriter. Street art hammock kinfolk sriracha, locavore quinoa iPhone XOXO tofu affogato kombucha. Shabby chic hexagon cloud bread, tattooed edison bulb pop-up before they sold out kombucha etsy schlitz affogato 90's. Pinterest godard cred raclette vaporware vegan kinfolk before they sold out raw denim chambray pickled small batch. Pork belly literally drinking vinegar pop-up butcher tumblr street art kale chips four dollar toast mlkshk roof party four loko. Aesthetic small batch deep v 3 wolf moon, shaman selfies brooklyn lumbersexual kogi occupy plaid 8-bit. Flannel kombucha hammock waistcoat shaman blog. Mixtape prism gastropub adaptogen, bespoke hashtag +1 thundercats butcher drinking vinegar blue bottle. Four loko pabst artisan green juice skateboard four dollar toast small batch cronut. Lo-fi gastropub pabst, pinterest hell of 8-bit leggings put a bird on it chambray cold-pressed.")

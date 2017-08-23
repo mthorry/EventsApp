@@ -10,6 +10,8 @@ class Event < ApplicationRecord
   has_many :user_events
   has_many :users, through: :user_events
 
+  validates :name, :address, :description, :the_date_id, :location_id, presence: true
+
 
 # 2017-08-22 15:17:19
   def self.formatdt(param)
