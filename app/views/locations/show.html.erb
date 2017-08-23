@@ -1,6 +1,14 @@
 <h1>Events Happening In <%= @location.name %></h1>
-  <ol>
-  <% @location.events.each do |event| %>
-    <li><%= link_to event.name, event_path(event) %>: <%= TheDate.format_date(event.the_date.date_time) %> at <%= TheDate.format_time(event.the_date.date_time) %></li>
+<br>
+  <ul>
+  <% @events.each do |event| %>
+    <li>
+    <p><%= link_to event.name, event_path(event) %>: </p>
+    <p><%= TheDate.format_date(event.the_date.date_time) %> at <%= TheDate.format_time(event.the_date.date_time) %> </p>
+    <p><%= link_to "Other Events On This Date", the_date_path(event.the_date)%></p>
+    <br>
+    </li>
   <% end %>
-</ol>
+</ul>
+
+<h3><%= link_to "All Events", events_path %></h3>

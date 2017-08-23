@@ -6,5 +6,6 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @events = @location.events.joins(:the_date).order("the_dates.date_time ASC")
   end
 end
