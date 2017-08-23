@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user), notice: "Welcome back!"
+      redirect_to dashboard_path(@user), notice: "Welcome back!"
     else
       redirect_to login_path
     end
