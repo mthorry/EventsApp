@@ -1,5 +1,5 @@
 <h1><%=@user.first_name%>'s Event Page</h1>
-
+<h3>Bio: <%=@user.bio%></h2>
 <h2>Here are <%=@user.first_name%>'s upcoming events:</h2>
  <ol>
 
@@ -11,8 +11,14 @@
 
   <h3>Events in <%= link_to @user.location.name, location_path(@user.location)%></h3>
   <h3> <%= link_to "Events in Other Cities", locations_path%></h3>
+
+  <% if current_user.friends.find(@user.id) %>
+  <h3>Already Friends</h2>
+  <% else @user != current_user %>
+  <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %>
+  <%end %>
+
   <% if @user == current_user %>
     <h4><%= link_to "Edit Your Account", edit_user_path(@user) %></h4>
       <%= link_to "Create New Event", new_event_path %>
-
   <%end %>

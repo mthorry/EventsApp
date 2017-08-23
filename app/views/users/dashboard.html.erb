@@ -3,6 +3,12 @@ Hey <%= @user.first_name %>!
 <p>You're logged in!</p>
 <%= link_to "Create New Event", new_event_path %>
 
+<h2>Friends List</h2>
+<ol>
+  <% @user.friends.each do |friend| %>
+  <li><%=link_to "#{friend.first_name} #{friend.last_name}", user_path(friend)%></li>
+  <% end %>
+</ol>
 <%else %>
 <p>You're not logged in!</p>
 <%end %>
