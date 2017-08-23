@@ -1,20 +1,36 @@
 <h1><%=@user.first_name%>'s Event Page</h1>
+<%= image_tag "#{@user.img}" %>
 <p><strong>About Me:</strong> <%=@user.bio%></p>
-<h2>Here are <%=@user.first_name%>'s upcoming events:</h2>
- <ol>
 
-<% @user.events.each do |event| %>
+<h2 >Here are <%=@user.first_name%>'s upcoming events:</h2>
 
-    <li> <p>Name: <%= link_to event.name, event_path(event) %></p> <p>Date: <%= link_to TheDate.format_date(event.the_date.date_time), the_date_path(event.the_date) %> </p> <p>Location: <%= link_to event.location.name, location_path(event.location) %></p> <p> <%= link_to 'Remove From My Events', deleteevent_path(event), :method => :post%></p> <br> </li>
-  <%end%>
-    </ol>
+<div class="card-deck">
+    <% @user.events.each do |event| %>
+      <div class="card">
+        <img class="card-img-top" src="https://unsplash.it/300/200/?random">
+        <div class="card-body">
+          <h4><%= link_to event.name, event_path(event), class: "card-title" %></h4>
+          <p class="card-text">
+            <p>Date: <%= TheDate.format_date(event.the_date.date_time) %></p>
+            <p>Location: <%= event.location.name %></p>
+          </p>
+        <%= link_to 'Remove From My Events', deleteevent_path(event), :method => :post, class: "btn btn-primary"%>
+        <br>
+      </div>
+    </div>
+    <%end%>
+</div>
+
 
   <h3>Events in <%= link_to @user.location.name, location_path(@user.location)%></h3>
   <h3> <%= link_to "Events in Other Cities", locations_path%></h3>
 
-  <h3>Already Friends</h2>
-  <% if @user != current_user %>
-  <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %>
+
+  <% if @user.id == current_user.id %>
+  <% elsif current_user.friends.find_by_id(@user.id) %>
+  <h3>Already Following</h2>
+    <% else %>
+  <%= link_to "Follow User", friendships_path(:friend_id => @user.id), :method => :post %>
   <%end %>
 
   <% if @user == current_user %>

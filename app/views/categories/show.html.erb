@@ -1,4 +1,4 @@
-<h1><%= @category.name %> Events</h1>
+<h1><%= @category.name.capitalize %> Events</h1>
 <ul>
 <% @category.events.each do |event| %>
   <li><%= link_to event.name, event_path(event) %>:

@@ -4,11 +4,13 @@
 <p> <%= @event.description %> </p><br>
 <h4>Categories:</h4>
 <ul>
+
 <% @event.categories.each do |category|%>
 <li><%= link_to category.name, category_path(category) %> </li>
-</ul>
+
 <%end%>
-  <br>
+</ul>
+<br>
 
 
 <h3>Attending:</h3>
