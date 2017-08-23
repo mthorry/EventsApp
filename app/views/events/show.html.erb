@@ -1,15 +1,29 @@
-<h1> <%= @event.name %>, <%= @event.location.name %> </h1>
-<h2> <%= @event.the_date.date_time %>, <%= @event.address%> </h2>
-<p> <%= @event.description %> </p>
+<h1><strong> <%= @event.name %></strong> </h1>
+<h2> <%= TheDate.format_date(@event.the_date.date_time) %> at <%= TheDate.format_time(@event.the_date.date_time) %>  </h2>
+<h3><%= @event.address%>, <%= @event.location.name %></h3>
+<p> <%= @event.description %> </p><br>
+<h4>Categories:</h4>
+<ul>
+<% @event.categories.each do |category|%>
+<li><%= link_to category.name, category_path(category) %> </li>
+</ul>
+<%end%>
   <br>
-  <h3><%=link_to "Add to My Events", addevent_path, :method => :post %></h3>
 
-<h2>Attending:</h2>
+
+<h3>Attending:</h3>
 <ul>
 <% @event.users.each do |user| %>
-<li> <%= link_to user.username, user_path(user) %> </li>
+<li> <%= link_to user.first_name, user_path(user) %> </li>
 <%end%>
 </ul>
 
-<p><%=link_to "Edit", edit_event_path(@event) %></p>
+<br>
+<h4><%=link_to "Add to My Events", addevent_path, :method => :post %></h4>
+<br>
+
 <p><%=link_to "Events", events_path %></p>
+
+<p><%=link_to "Edit", edit_event_path(@event) %></p>
+
+<%= link_to "Create New Event", new_event_path %>

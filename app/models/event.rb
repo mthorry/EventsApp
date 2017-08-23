@@ -14,6 +14,6 @@ class Event < ApplicationRecord
 # 2017-08-22 15:17:19
   def self.formatdt(param)
     "#{param[:year]}-#{param[:month]}-#{param[:day]} #{param[:hour]}:#{param[:minute]}:00"
-
   end
+
 end

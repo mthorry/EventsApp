@@ -11,4 +11,8 @@
 
   <h3>Events in <%= link_to @user.location.name, location_path(@user.location)%></h3>
   <h3> <%= link_to "Events in Other Cities", locations_path%></h3>
-  <h4><%= link_to "Edit Your Account", edit_user_path(@user) %></h4>
+  <% if @user == current_user %>
+    <h4><%= link_to "Edit Your Account", edit_user_path(@user) %></h4>
+      <%= link_to "Create New Event", new_event_path %>
+
+  <%end %>

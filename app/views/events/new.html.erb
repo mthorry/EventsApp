@@ -12,6 +12,9 @@
   <%= f.label :location %>
   <%= f.collection_select(:location_id, Location.all, :id, :name, prompt: true) %><br>
 
+  <%= f.label :category %>
+  <%= f.collection_select(:category_ids, Category.all, :id, :name, prompt: true) %><br>
+
  <%= f.label :date_time %>
   <%= select_datetime Date.today, :prefix => :date_time %><br>
 

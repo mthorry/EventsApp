@@ -1,0 +1,6 @@
+<h1><%= @category.name %> Events</h1>
+<ul>
+<% @category.events.each do |event| %>
+  <li><%= link_to event.name, event_path(event) %>: <%=TheDate.format_date(event.the_date.date_time)%></li>
+<%end%>
+</ul>

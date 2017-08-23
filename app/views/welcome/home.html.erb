@@ -1,3 +1,4 @@
+<% if !current_user %>
 <h1>Welcome! Log in below:</h1>
 <%= form_for @user, url: login_path, method: :post do |f| %>
   <%= f.label :username %>
@@ -8,4 +9,9 @@
 
   <%= f.submit "log in" %><br>
   Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+<% end %>
+<% else %>
+Hey <%= current_user.first_name %>!
+<%= link_to "Create New Event", new_event_path %>
+
 <% end %>

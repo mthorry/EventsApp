@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :dashboard]
 
   def show
     @message = params[:message] if params[:message]
     @message ||= false
+  end
+
+  def dashboard
+    if @user != current_user
+      redirect_to 'show'
+    end
   end
 
   def new

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'welcome/home'
 
+  get 'users/:id/dashboard', to: 'users#dashboard', as: 'dashboard'
+
   root 'welcome#home'
 
   post '/events/:id', to: 'events#addevent', as: 'addevent'
