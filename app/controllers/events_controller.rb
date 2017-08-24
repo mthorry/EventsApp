@@ -13,7 +13,8 @@ class EventsController < ApplicationController
       event.name.downcase.include?(search)
     end
     else
-      @events = Event.most_recent
+      #.most_recent
+      @events = Event.most_recent.paginate(:page => params[:page], per_page: 10)
     end
   end
 

@@ -1,25 +1,47 @@
-
-<h1 class="text-left">Events Happening In <%= @location.name %></h1>
-<h3 class="text-right"><%= link_to "All Events", events_path %></h3>
-
 <div class="row">
-<div class="card-columns">
+<h1 class="text-left col-8">Events Happening In <%= @location.name %></h1>
+<h3 class="text-right col-4"><%= link_to "All Events", events_path %></h3>
+</div>
+<br>
+
+<div class="container">
+<div class="row">
     <% @events.each do |event| %>
-      <div class="col-lg-6">
-       <div class="card">
+        <% if !current_user.events.include?(event) %>
+      <div class="col-sm-2">
+       <div class="card" id="card-padding">
         <img class="card-img-top" src=<%=event.img%>>
         <div class="card-body">
-          <h4><%= link_to event.name, event_path(event), class: "card-title text-uppercase" %></h4>
+          <h4><%= link_to event.name, event_path(event), class: "card-title" %></h4>
           <p class="card-text">
             <p><strong>Date:</strong> <%= TheDate.format_date(event.the_date.date_time) %></p>
             <p><strong>Location:</strong> <%= event.location.name %></p>
           </p>
         <%= link_to 'Add to my events', addevent_path(event), :method => :post, class: "btn btn-outline-primary"%>
+        <p></p>
+        <%= link_to "Buy Tickets", event.url, class: "btn btn-outline-success"%>
       </div>
     </div>
     </div>
-    <%end%>
+    <% else %>
+          <div class="col-sm-2">
+       <div class="card" id="card-padding">
+        <img class="card-img-top" src=<%=event.img%>>
+        <div class="card-body">
+          <h4><%= link_to event.name, event_path(event), class: "card-title" %></h4>
+          <p class="card-text">
+            <p><strong>Date:</strong> <%= TheDate.format_date(event.the_date.date_time) %></p>
+            <p><strong>Location:</strong> <%= event.location.name %></p>
+          </p>
+        <%= link_to "You're Attending", addevent_path(event), :method => :post, class: "btn btn-success"%>
+        <br>
+      </div>
+    </div>
+    </div>
+        <%end%>
+     <%end%>
 </div>
 </div>
 <br>
 
+<%= will_paginate @events %>

@@ -3,8 +3,15 @@
 <h3><%= @event.address%>, <%= @event.location.name %></h3>
 <%= image_tag "#{@event.img}" %>
 <p> <%= @event.description %> </p><br>
-<h4>Categories:</h4>
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBXzzycWLXq_LM95pL4WiFW52J2X3djTeE
+    &q=<%=@event.address%>" allowfullscreen>
+</iframe><h4>Categories:</h4>
 <ul>
+
 
 <% @event.categories.each do |category|%>
 <li><%= link_to category.name, category_path(category) %> </li>

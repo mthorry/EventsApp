@@ -1,21 +1,6 @@
-Hey <%= @user.first_name %>!
+<h1>Hey <%= @user.first_name %>!</h1>
 <% if @user == current_user %>
-<p>You’re logged in!</p>
-<%= link_to "Create New Event", new_event_path %>
 
-<h2>Followers</h2>
-<ol>
-  <% Friendship.where(friend_id: current_user.id).each do |friend| %>
-  <li><%=link_to "#{User.find_by_id(friend.user_id).first_name}" %></li>
-  <% end %>
-</ol>
-
-<h2>Following</h2>
-<ol>
-  <% @user.friends.each do |friend| %>
-  <li><%=link_to "#{friend.first_name} #{friend.last_name}", user_path(friend)%></li>
-  <% end %>
-</ol>
 
 <h2>Recommended Events</h2>
 <ol>
@@ -25,6 +10,27 @@ Hey <%= @user.first_name %>!
   <% end %>
   <% end %>
 </ol>
+
+<h2>Followers</h2>
+<div class="container">
+<div class="row">
+  <% Friendship.where(friend_id: current_user.id).each do |friend| %>
+  <a href=<%=user_path(User.find_by_id(friend.user_id))%>><img src=<%=User.find_by_id(friend.user_id).img%> id="mini-img"></a>
+
+  <% end %>
+  </div>
+</div>
+<br>
+
+<h2>Following</h2>
+<div class="container">
+<div class="row">
+  <% @user.friends.each do |friend| %>
+<a href=<%=user_path(friend)%>><img src=<%=friend.img%> id="mini-img"></a>
+  <% end %>
+</div>
+</div>
+<br>
 
 
 <%else %>
