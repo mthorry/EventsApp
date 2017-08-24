@@ -72,3 +72,40 @@ Event.all.each do |e|
   e.img = "http://lorempixel.com/400/300/nightlife/#{num}"
   e.save
 end
+
+require 'rubygems'
+ require 'eventful/api'
+
+# First, create our Eventful::API object
+ eventful = Eventful::API.new 'GqHWFQtLLpdW8s5r'
+
+  # This is the cool part!
+
+  #AFTER categories are made
+
+Category.all.each do |c|
+  results = eventful.call 'events/search',
+                           :keywords => c,
+                           :location => "New York",
+                           :page_size => 50,
+                           :date => 'Future',
+                           :sort_order => 'popularity'
+  eventful.call 'events/search'
+
+  #  # Output the results
+   results['events']['event'].each do |event|
+    Event.create(
+      name: event['title']
+
+      )
+     puts
+     puts "http://eventful.com/events/" + event['id']
+     puts event['title']
+     puts "  at " + event['venue_name']
+     puts "  on " + event['start_time'].strftime("%a, %b %d, %Y %I:%M %p") if event['start_time']
+     puts event['popularity']
+   end
+ end
+
+
+

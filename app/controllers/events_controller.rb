@@ -7,7 +7,14 @@ class EventsController < ApplicationController
     # @dates = TheDate.order(:date_time)
     # @events = Event.ordered_dates(@dates)
     # @events = Event.order(:the_date_id)
-    @events = Event.most_recent
+    if params[:term]
+      search = params[:term].downcase
+      @events = Event.all.select do |event|
+      event.name.downcase.include?(search)
+    end
+    else
+      @events = Event.most_recent
+    end
   end
 
   def new
