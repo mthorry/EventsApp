@@ -1,6 +1,16 @@
 <h1>Event Categories</h1>
-<ul>
-<% @categories.each do |category| %>
-  <li><%= link_to category.name.capitalize, category_path(category)%></li>
+
+<div class="row">
+<div class="card-columns">
+  <% @categories.each do |category| %>
+      <div class="card text-center">
+        <img class="card-img" src="http://lorempixel.com/400/300/nightlife/#{category.id%10}" alt="Card image">
+        <div class="card-img-overlay">
+          <h4 class="card-title">
+            <%=link_to category.name.capitalize, category_path(category), class: "text-light bg-gray"%>
+          </h4>
+        </div>
+      </div>
 <%end%>
-</ul>
+</div>
+</div>

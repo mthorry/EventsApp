@@ -1,39 +1,49 @@
 <h1><%=@user.first_name%>'s Event Page</h1>
-<%= image_tag "#{@user.img}" %>
-<p><strong>About Me:</strong> <%=@user.bio%></p>
-
+  <div class="row">
+    <%= image_tag "#{@user.img}", class: "img-fluid" %>
+    <h3 class="col-sm-8 text-justify"><span class="font-weight-bold">About Me:</span> <%=@user.bio%></h3>
+  </div>
+<br>
 <h2 >Here are <%=@user.first_name%>'s upcoming events:</h2>
 
-<div class="card-deck">
+<div class="row">
+<div class="card-columns">
     <% @user.events.each do |event| %>
-      <div class="card">
-        <img class="card-img-top" src="https://unsplash.it/300/200/?random">
+      <div class="col-12">
+       <div class="card">
+        <img class="card-img-top" src=<%=event.img%>>
         <div class="card-body">
           <h4><%= link_to event.name, event_path(event), class: "card-title" %></h4>
           <p class="card-text">
             <p>Date: <%= TheDate.format_date(event.the_date.date_time) %></p>
             <p>Location: <%= event.location.name %></p>
           </p>
-        <%= link_to 'Remove From My Events', deleteevent_path(event), :method => :post, class: "btn btn-primary"%>
+          <% if current_user == @user %>
+        <%= link_to 'Remove From My Events', deleteevent_path(event), :method => :post, class: "btn btn-outline-danger"%>
+          <% else %>
+        <%= link_to 'Add to my events', addevent_path(event), :method => :post, class: "btn btn-outline-primary"%>
+        <%end%>
         <br>
       </div>
     </div>
+    </div>
     <%end%>
 </div>
+</div>
+<br>
 
 
-  <h3>Events in <%= link_to @user.location.name, location_path(@user.location)%></h3>
-  <h3> <%= link_to "Events in Other Cities", locations_path%></h3>
+  <h3>Events in <%= link_to @user.location.name, location_path(@user.location)%> ...... <%= link_to "Events in Other Cities", locations_path%></h3><br>
 
 
   <% if @user.id == current_user.id %>
   <% elsif current_user.friends.find_by_id(@user.id) %>
-  <h3>Already Following</h2>
+  <h5>You Follow <%= @user.first_name %></h5>
     <% else %>
   <%= link_to "Follow User", friendships_path(:friend_id => @user.id), :method => :post %>
   <%end %>
 
   <% if @user == current_user %>
-    <h4><%= link_to "Edit Your Account", edit_user_path(@user) %></h4>
-      <%= link_to "Create New Event", new_event_path %>
+    <h4><%= link_to "Edit Your Account", edit_user_path(@user) %></h4><br>
+      <%= link_to "Create New Event", new_event_path, class: "btn btn-outline-secondary" %><br>
   <%end %>

@@ -1,6 +1,7 @@
 <h1><strong> <%= @event.name %></strong> </h1>
 <h2> <%= TheDate.format_date(@event.the_date.date_time) %> at <%= TheDate.format_time(@event.the_date.date_time) %>  </h2>
 <h3><%= @event.address%>, <%= @event.location.name %></h3>
+<%= image_tag "#{@event.img}" %>
 <p> <%= @event.description %> </p><br>
 <h4>Categories:</h4>
 <ul>
