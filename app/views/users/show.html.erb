@@ -9,7 +9,7 @@
 <h2 >Here are <%=@user.first_name%>'s upcoming events:</h2>
 <div class="row">
 <div class="card-columns">
-    <% @user.events.each do |event| %>
+    <% @events.each do |event| %>
       <div class="col-12">
        <div class="card">
         <img class="card-img-top" src=<%=event.img%>>

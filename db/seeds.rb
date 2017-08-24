@@ -67,45 +67,50 @@
 #   u.save
 # end
 
-Event.all.each do |e|
-  num = e.id%10+1
-  e.img = "http://lorempixel.com/400/300/nightlife/#{num}"
-  e.save
-end
+# Event.all.each do |e|
+#   num = e.id%10+1
+#   e.img = "http://lorempixel.com/400/300/nightlife/#{num}"
+#   e.save
+# end
 
 require 'rubygems'
- require 'eventful/api'
+require 'eventful/api'
+require 'byebug'
 
-# First, create our Eventful::API object
  eventful = Eventful::API.new 'GqHWFQtLLpdW8s5r'
 
-  # This is the cool part!
-
-  #AFTER categories are made
-
-Category.all.each do |c|
+cat = Category.find(1)
   results = eventful.call 'events/search',
-                           :keywords => c,
+                           :keywords => cat.name,
                            :location => "New York",
                            :page_size => 50,
                            :date => 'Future',
                            :sort_order => 'popularity'
-  eventful.call 'events/search'
 
-  #  # Output the results
-   results['events']['event'].each do |event|
-    Event.create(
-      name: event['title']
+  cat_results = results['events']['event']
 
+   cat_results.each do |this_event|
+    this_date = TheDate.find_or_create_by(date_time: this_event['start_time'])
+    e = Event.new(
+      name: this_event['title'],
+      location_id: 1,
+      img: this_event['image']['medium']['url'],
+      description: this_event['description'],
+      venue: this_event['venue_name'],
+      the_date_id: this_date.id,
+      address: this_event['venue_address'],
+      url: this_event['url']
       )
-     puts
-     puts "http://eventful.com/events/" + event['id']
-     puts event['title']
-     puts "  at " + event['venue_name']
-     puts "  on " + event['start_time'].strftime("%a, %b %d, %Y %I:%M %p") if event['start_time']
-     puts event['popularity']
+    e.categories << cat
+    e.save
    end
- end
+
+
+# categories.each do |cat|
+#   Category.create(
+#     name: cat
+#     )
+# end
 
 
 

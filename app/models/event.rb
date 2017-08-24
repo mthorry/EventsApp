@@ -12,7 +12,7 @@ class Event < ApplicationRecord
 
   scope :most_recent, -> {joins(:the_date).order("the_dates.date_time ASC")}
 
-  validates :name, :address, :description, :the_date_id, :location_id, presence: true
+  # validates :name, :address, :description, :the_date_id, :location_id, presence: true
 
 
 # 2017-08-22 15:17:19

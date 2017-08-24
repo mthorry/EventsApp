@@ -1,6 +1,6 @@
 <h1><%= @category.name.capitalize %> Events</h1>
 <ul>
-<% @category.events.each do |event| %>
+<% @events.each do |event| %>
   <li><%= link_to event.name, event_path(event) %>:
   <p><%=link_to "#{TheDate.format_date(event.the_date.date_time)}"%> in <%= link_to event.location.name, location_path(event.location) %></p></li>
 <%end%>

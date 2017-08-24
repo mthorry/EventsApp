@@ -68,6 +68,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     erubi (1.6.1)
+    eventfulapi (2.2.1)
+      mime-types (> 0.0.0)
     execjs (2.7.0)
     faker (1.8.4)
       i18n (~> 0.5)
@@ -188,6 +190,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  eventfulapi
   faker (~> 1.8.4)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

@@ -5,7 +5,7 @@
 <div class="row">
 <div class="card-columns">
     <% @events.each do |event| %>
-      <div class="col-12">
+      <div class="col-lg-6">
        <div class="card">
         <img class="card-img-top" src=<%=event.img%>>
         <div class="card-body">
@@ -15,7 +15,6 @@
             <p><strong>Location:</strong> <%= event.location.name %></p>
           </p>
         <%= link_to 'Add to my events', addevent_path(event), :method => :post, class: "btn btn-outline-primary"%>
-        <br>
       </div>
     </div>
     </div>
