@@ -40,6 +40,7 @@
   <% if @user.id == current_user.id %>
   <% elsif current_user.friends.find_by_id(@user.id) %>
   <h5>You Follow <%= @user.first_name %></h5>
+
     <% else %>
   <%= link_to "Follow User", friendships_path(:friend_id => @user.id), :method => :post %>
   <%end %>
