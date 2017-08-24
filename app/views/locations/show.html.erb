@@ -1,14 +1,26 @@
-<h1>Events Happening In <%= @location.name %></h1>
-<br>
-  <ul>
-  <% @events.each do |event| %>
-    <li>
-    <p><%= link_to event.name, event_path(event) %>: </p>
-    <p><%= TheDate.format_date(event.the_date.date_time) %> at <%= TheDate.format_time(event.the_date.date_time) %> </p>
-    <p><%= link_to "Other Events On This Date", the_date_path(event.the_date)%></p>
-    <br>
-    </li>
-  <% end %>
-</ul>
 
-<h3><%= link_to "All Events", events_path %></h3>
+<h1 class="text-left">Events Happening In <%= @location.name %></h1>
+<h3 class="text-right"><%= link_to "All Events", events_path %></h3>
+
+<div class="row">
+<div class="card-columns">
+    <% @events.each do |event| %>
+      <div class="col-12">
+       <div class="card">
+        <img class="card-img-top" src=<%=event.img%>>
+        <div class="card-body">
+          <h4><%= link_to event.name, event_path(event), class: "card-title text-uppercase" %></h4>
+          <p class="card-text">
+            <p><strong>Date:</strong> <%= TheDate.format_date(event.the_date.date_time) %></p>
+            <p><strong>Location:</strong> <%= event.location.name %></p>
+          </p>
+        <%= link_to 'Add to my events', addevent_path(event), :method => :post, class: "btn btn-outline-primary"%>
+        <br>
+      </div>
+    </div>
+    </div>
+    <%end%>
+</div>
+</div>
+<br>
+

@@ -1,11 +1,12 @@
 <h1><%=@user.first_name%>'s Event Page</h1>
   <div class="row">
     <%= image_tag "#{@user.img}", class: "img-fluid" %>
-    <h3 class="col-sm-8 text-justify"><span class="font-weight-bold">About Me:</span> <%=@user.bio%></h3>
+    <h4 class="col-sm-8 text-justify"><span class="font-weight-bold">About Me:</span> <%=@user.bio%></h4>
   </div>
 <br>
-<h2 >Here are <%=@user.first_name%>'s upcoming events:</h2>
 
+
+<h2 >Here are <%=@user.first_name%>'s upcoming events:</h2>
 <div class="row">
 <div class="card-columns">
     <% @user.events.each do |event| %>
@@ -13,10 +14,10 @@
        <div class="card">
         <img class="card-img-top" src=<%=event.img%>>
         <div class="card-body">
-          <h4><%= link_to event.name, event_path(event), class: "card-title" %></h4>
+          <h4><%= link_to event.name, event_path(event), class: "card-title text-uppercase" %></h4>
           <p class="card-text">
-            <p>Date: <%= TheDate.format_date(event.the_date.date_time) %></p>
-            <p>Location: <%= event.location.name %></p>
+            <p><strong>Date:</strong> <%= TheDate.format_date(event.the_date.date_time) %></p>
+            <p><strong>Location:</strong> <%= event.location.name %></p>
           </p>
           <% if current_user == @user %>
         <%= link_to 'Remove From My Events', deleteevent_path(event), :method => :post, class: "btn btn-outline-danger"%>
