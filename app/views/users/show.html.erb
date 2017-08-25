@@ -1,3 +1,4 @@
+<div class="container">
 <h1><%=@user.first_name%>'s Event Page</h1>
 <div class="container">
   <div class="row">
@@ -35,19 +36,32 @@
 </div>
 <br>
 
+<h2>Followers</h2>
+<div class="container">
+<div class="row">
+  <% Friendship.where(friend_id: current_user.id).each do |friend| %>
+  <a href=<%=user_path(User.find_by_id(friend.user_id))%>><img src=<%=User.find_by_id(friend.user_id).img%> id="mini-img"></a>
 
-  <h3>Events in <%= link_to @user.location.name, location_path(@user.location)%> ...... <%= link_to "Events in Other Cities", locations_path%></h3><br>
+  <% end %>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <h3 class="col-4">Events in <%= link_to @user.location.name, location_path(@user.location)%></h3>
+  <h3 class="col-4"> <%= link_to "Events in Other Cities", locations_path%></h3>
 
 
   <% if @user.id == current_user.id %>
   <% elsif current_user.friends.find_by_id(@user.id) %>
-  <h5>You Follow <%= @user.first_name %></h5>
+  <h5 class="col-4">You Follow <%= @user.first_name %></h5>
   <%= link_to "Remove Follower", friendship_path(:friend_id => @user.id), :method => :delete %>
     <% else %>
   <%= link_to "Follow User", friendships_path(:friend_id => @user.id), :method => :post %>
   <%end %>
 
   <% if @user == current_user %>
-    <h4><%= link_to "Edit Your Account", edit_user_path(@user) %></h4><br>
-      <%= link_to "Create New Event", new_event_path, class: "btn btn-outline-secondary" %><br>
+    <h4 class="col-4"><%= link_to "Edit Your Account", edit_user_path(@user) %></h4>
   <%end %>
+</div>
+</div>

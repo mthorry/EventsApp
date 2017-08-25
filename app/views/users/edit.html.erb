@@ -1,3 +1,8 @@
+<div class="container">
+
+<div class="col-md-6 col-md-offset-4">
+
+  <div class="user-form">
 <h1>Edit User Form</h1>
 <%= form_for @user do |f| %>
 
@@ -13,5 +18,8 @@
   <%= f.label :location %>
   <%= f.collection_select(:location_id, Location.all, :id, :name, prompt: true) %><br>
 
-  <%= f.submit "update" %>
+  <%= f.submit "Update", class: "btn btn-primary" %>
 <% end %>
+</div>
+</div>
+</div>

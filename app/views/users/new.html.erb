@@ -1,28 +1,36 @@
+<div class="jumbotron new-user-jumbo">
 
+  <div class="user-form">
+  <h1>Sign Up for Let's</h1>
+  <br>
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
   <%= f.label :username %>
-  <%= f.text_field :username %><br>
+  <%= f.text_field :username, class: "login-type" %><br>
 
   <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br>
+  <%= f.text_field :first_name, class: "login-type" %><br>
 
   <%= f.label :last_name %>
-  <%= f.text_field :last_name %><br>
+  <%= f.text_field :last_name, class: "login-type" %><br>
 
   <%= f.label :bio %>
-  <%= f.text_area :bio %><br>
+  <%= f.text_area :bio, class: "login-type" %><br>
 
   <%= f.label :location %>
   <%= f.collection_select(:location_id, Location.all, :id, :name, prompt: true) %><br>
 
 
   <%= f.label :password %>
-  <%= f.password_field :password %><br>
+  <%= f.password_field :password, class: "login-type" %><br>
 
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br>
+  <%= f.password_field :password_confirmation, class: "login-type" %><br>
 
-  <%= f.submit "upload image" %>
+  <%= f.submit "Add Image", class: "btn btn-outline-secondary" %><br><br>
 
-  <%= f.submit "create" %>
+  <%= f.submit "Sign Up" , class: "btn btn-primary btn-lg"%>
+
 <% end %>
+
+</div>
+</div>

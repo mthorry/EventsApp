@@ -16,6 +16,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.container {
+h1, h2, h3  {
+  font-family: "Playfair Display";
+  font-weight: bold;
+}
+p, h4, h5 {
+  font-weight: lighter;
+}
+}
+
 #profile-image {
   max-width: 275px;
   max-height: 250px;
@@ -30,3 +40,50 @@
   max-height: 100px;
 }
 
+#event-desc {
+  margin-top: -125px;
+}
+
+.jumbotron {
+  background-image: url(http://i.imgur.com/kziAoNv.gif);
+  background-repeat: no-repeat;
+  margin-top: -50px;
+  background-position: 0%, 25%;
+  background-size: cover;
+  background-attachment: fixed;
+  top: 25%;
+  width: 100%;
+  height: 1000px;
+  text-align: center;
+  text-shadow: black 0.3em 0.3em 0.3em;
+  color: white;
+}
+
+.login-type {
+  color: black;
+}
+
+.new-user-jumbo {
+  background-image: url(https://media.timeout.com/images/100521811/image.jpg);
+  background-repeat: no-repeat;
+  margin-top: -50px;
+  background-position: 0%, 25%;
+  background-size: cover;
+  background-attachment: fixed;
+  top: 25%;
+  width: 100%;
+  height: 1000px;
+  text-align: center;
+  text-shadow: black 0.3em 0.3em 0.3em;
+  color: white;
+}
+
+.navbar {
+  font-size: 175%;
+  font-family: "Playfair Display";
+  font-weight: bold;
+}
+
+.jumbotron {h1 {
+  font-family: "lobster-regular";
+}}

@@ -1,21 +1,24 @@
-<h1><strong> <%= @event.name %></strong> </h1>
-<h2> <%= TheDate.format_date(@event.the_date.date_time) %> at <%= TheDate.format_time(@event.the_date.date_time) %>  </h2>
-<h3><%= @event.address%>, <%= @event.location.name %></h3>
-<%= image_tag "#{@event.img}" %>
-<p> <%= @event.description %> </p><br>
-<iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBXzzycWLXq_LM95pL4WiFW52J2X3djTeE
-    &q=<%=@event.address%>" allowfullscreen>
-</iframe><h4>Categories:</h4>
+<div class="container">
+
+<div class="container">
+<div class="row">
+<%= image_tag "#{@event.img}", class: "col align-self-start", id: "profile-image" %>
+<h1 class="col-3"><strong> <%= @event.name %></strong> </h1>
+<h2 class="col-3"> <%= TheDate.format_date(@event.the_date.date_time) %> at <%= TheDate.format_time(@event.the_date.date_time) %>  </h2>
+<h3 class="col-3"><%= @event.address%>, <%= @event.location.name %></h3>
+<h4 class="col-md-9 ml-md-auto" id="event-desc"> <%= @event.description %><br>
+<%=link_to "Add to My Events", addevent_path, :method => :post, class: "btn btn-outline-success btn-lg" %>
+</h4><br>
+</div>
+</div>
+
+<br>
+<div class="row">
+<span class="col-6">
+<h3>Categories:</h3>
 <ul>
-
-
 <% @event.categories.each do |category|%>
 <li><%= link_to category.name, category_path(category) %> </li>
-
 <%end%>
 </ul>
 <br>
@@ -27,13 +30,21 @@
 <li> <%= link_to user.first_name, user_path(user) %> </li>
 <%end%>
 </ul>
-
-<br>
-<h4><%=link_to "Add to My Events", addevent_path, :method => :post %></h4>
+</span>
 <br>
 
-<p><%=link_to "Events", events_path %></p>
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBXzzycWLXq_LM95pL4WiFW52J2X3djTeE
+    &q=<%=@event.address%>" allowfullscreen
+    class="col-6">
+</iframe>
+
+</div>
+<h3><%=link_to "Events", events_path %></h3>
 
 <!-- <p><%=link_to "Edit", edit_event_path(@event) %></p> -->
 
-<%= link_to "Create New Event", new_event_path %>
+</div>

@@ -1,15 +1,36 @@
-<% if !current_user %>
-<h1>Welcome! Log in below:</h1>
-<%= form_for @user, url: login_path, method: :post do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>
+<div class="jumbotron jumbotron-fluid">
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
+<div class="container-fluid">
 
-  <%= f.submit "log in" %><br>
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
-<% end %>
+
+  <div class="user-form">
+  <% if !current_user %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <h1 class="display-3">Welcome! Log in below:</h1>
+    <p class="lead">Let's Have Fun Together is the Premier Event Planning App</p>
+
+      <%= form_for @user, url: login_path, method: :post do |f| %>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "login-type" %><br>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "login-type" %><br>
+
+        <%= f.submit "Log In", class: "btn btn-primary btn-lg" %>
+        Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+  <% end %>
+  </div>
+</div>
+</div>
+
 <% else %>
 Hey <%= current_user.first_name %>!
 <%= link_to "Create New Event", new_event_path %>

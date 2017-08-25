@@ -1,7 +1,10 @@
+<div class="container">
+
 <h1>All Events</h1>
+<br>
 <%= form_tag(events_path, method: :get) do %>
   <%= text_field_tag :term %>
-  <%= submit_tag 'Search' %>
+  <%= submit_tag 'Search', class: "btn btn-secondary" %>
 <% end %>
 <br>
 <ul>
@@ -12,6 +15,7 @@
   </li>
 <%end%>
 </ul>
-<%= link_to "Create New Event", new_event_path %>
+<%= link_to "Create New Event", new_event_path, class: "btn btn-success btn-lg" %>
 
 <%= will_paginate @events %>
+</div>

@@ -1,10 +1,31 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<div class="jumbotron jumbotron-fluid">
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+<div class="container-fluid">
 
-  <%= f.submit "log in" %>
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
-<% end %>
+
+  <div class="user-form">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <h1 class="display-3">Welcome! Log in below:</h1>
+    <p class="lead">Let's Have Fun Together is the Premier Event Planning App</p>
+
+      <%= form_for @user, url: login_path, method: :post do |f| %>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "login-type" %><br>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "login-type" %><br>
+
+        <%= f.submit "Log In", class: "btn btn-primary btn-lg" %>
+        Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+  <% end %>
+  </div>
+</div>
+</div>
