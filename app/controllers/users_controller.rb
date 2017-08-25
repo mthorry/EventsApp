@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     if @user != current_user
       redirect_to 'show'
     end
+    @friends = Friendship.where(friend_id: current_user.id)
   end
 
   def new

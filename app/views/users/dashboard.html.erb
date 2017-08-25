@@ -2,14 +2,18 @@
 
 <h1>Hey <%= @user.first_name %>!</h1><br>
 
+<h2 class="font-italic" style="font-weight: lighter;">This is your dashboard! It gives you a snapshot of what your friends are up to. Go out and make some <a href="/users/<%=rand(40)%>">friends</a> or find an <a href="/events"> event</a>!</h2>
+<br>
+<br>
+
 
 <h2>What Your Friends Are Up To:</h2>
+<div class="container">
 <div class="row">
-<div class="card-columns">
   <% @user.friends.each do |friend| %>
     <%  if friend.events.count > 0%>
     <% event = friend.events.first %>
-      <div class="col-lg-6 col-md-12">
+      <div class="col-sm-6 col-lg-3 col-md-4">
        <div class="card">
         <img class="card-img-top" src=<%=event.img%>>
         <div class="card-body">
@@ -33,9 +37,12 @@
 <h2>Followers</h2>
 <div class="container">
 <div class="row">
-  <% Friendship.where(friend_id: current_user.id).each do |friend| %>
+<% if @friends.count > 0 %>
+  <% @friends.each do |friend| %>
   <a href=<%=user_path(User.find_by_id(friend.user_id))%>><img src=<%=User.find_by_id(friend.user_id).img%> id="mini-img"></a>
-
+  <% end %>
+  <%else%>
+    <h3 class="font-italic" style="font-weight: lighter;">It's okay, we can't all have <a href="/users/<%=rand(40)%>">followers</a></h3>
   <% end %>
   </div>
 </div>
@@ -44,9 +51,13 @@
 <h2>Following</h2>
 <div class="container">
 <div class="row">
+<% if @user.friends.count > 0 %>
   <% @user.friends.each do |friend| %>
 <a href=<%=user_path(friend)%>><img src=<%=friend.img%> id="mini-img"></a>
   <% end %>
+  <%else%>
+  <h3 class="font-italic" style="font-weight: lighter;">Go out and find some <a href="/users/<%=rand(40)%>">people</a> to stalk</h3>
+  <%end%>
 </div>
 </div>
 <br>

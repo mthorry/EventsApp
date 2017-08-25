@@ -1,16 +1,22 @@
+<div class="container">
 <h1>Event Categories</h1>
-
 <div class="row">
 <div class="card-columns">
   <% @categories.each do |category| %>
       <div class="card text-center">
-        <img class="card-img" src="http://lorempixel.com/400/300/nightlife/#{category.id%10}" alt="Card image">
+      <a href="categories/<%=category.id%>">
+        <img class="card-img" src=<%=category.img%> alt="http://spacecoastsports.com/wp-content/uploads/2014/06/sportsballs1.png">
         <div class="card-img-overlay">
           <h4 class="card-title">
-            <%=link_to category.name.capitalize, category_path(category), class: "text-light bg-gray"%>
-          </h4>
+          <br>
+          <br>
+          <br>
+          <br>
+            <%=link_to category.name.capitalize, category_path(category), class: "text-light bg-gray text-center", style: "font-size: 350%; text-shadow: black 0.1em 0.1em 0.1em;"%>
+          </h4></a>
         </div>
       </div>
 <%end%>
+</div>
 </div>
 </div>

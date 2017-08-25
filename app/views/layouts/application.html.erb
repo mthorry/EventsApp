@@ -115,13 +115,15 @@
               <!--/.First column-->
 
               <!--Third column-->
+              <% if current_user %>
               <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-r">
                   <h4 class="title font-bold"><strong>Useful links</strong></h4>
                   <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                  <p><a href="#!">Dashboard</a></p>
-                  <p><a href="#!">Events</a></p>
-                  <p><a href="#!">Locations</a></p>
+                  <p><a href="/users/<%=current_user.id%>/dashboard">Dashboard</a></p>
+                  <p><a href="/events">Events</a></p>
+                  <p><a href="/locations">Locations</a></p>
               </div>
+              <%end%>
               <!--/.Third column-->
 
               <!--Fourth column-->
@@ -152,7 +154,7 @@
   $(document).ready(function () {
       $('.dropdown-toggle').dropdown();
   });
-</script>
+  </script>
 
   </body>
 

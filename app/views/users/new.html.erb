@@ -17,7 +17,7 @@
   <%= f.text_area :bio, class: "login-type" %><br>
 
   <%= f.label :location %>
-  <%= f.collection_select(:location_id, Location.all, :id, :name, prompt: true) %><br>
+  <%= f.collection_select(:location_id, Location.all, :id, :name, prompt: true, id: "dropdown-text") %><br>
 
 
   <%= f.label :password %>

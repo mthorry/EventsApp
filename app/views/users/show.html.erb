@@ -8,6 +8,9 @@
 </div>
 <br>
 
+<% if 0 > @user.events.count %>
+  <h2 class="font-italic" style="font-weight: lighter;">This is your dashboard! It gives you a snapshot of what your friends are up to. Go out and make some <a href="/users/<%=rand(40)%>">friends</a> or find an <a href="/events"> event</a>!</h2>
+<% end %>
 
 <h2 >Here are <%=@user.first_name%>'s upcoming events:</h2>
 <div class="container">
