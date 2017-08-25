@@ -3,17 +3,17 @@
 <div class="container">
   <div class="row">
     <img src=<%=@user.img%> class="img-thumbnail col-4" id="profile-image">
-    <h4 class="text-justify col-8"><span class="font-weight-bold">About Me:</span> <%=@user.bio%></h4>
+    <h4 class="text-justify col-8">About Me: <span style="font-weight: lighter;"><%=@user.bio%></span></h4>
   </div>
 </div>
 <br>
 
 
 <h2 >Here are <%=@user.first_name%>'s upcoming events:</h2>
+<div class="container">
 <div class="row">
-<div class="card-columns">
     <% @events.each do |event| %>
-      <div class="col-lg-6 col-md-12">
+      <div class="col-sm-6 col-lg-3 col-md-4">
        <div class="card">
         <img class="card-img-top" src=<%=event.img%>>
         <div class="card-body">
@@ -55,13 +55,13 @@
   <% if @user.id == current_user.id %>
   <% elsif current_user.friends.find_by_id(@user.id) %>
   <h5 class="col-4">You Follow <%= @user.first_name %></h5>
-  <%= link_to "Remove Follower", friendship_path(:friend_id => @user.id), :method => :delete %>
+  <%= link_to "Remove Follower", friendship_path(:friend_id => @user.id), :method => :delete, class: "btn-outline-danger btn-lg" %>
     <% else %>
-  <%= link_to "Follow User", friendships_path(:friend_id => @user.id), :method => :post %>
+  <%= link_to "Follow User", friendships_path(:friend_id => @user.id), :method => :post, class: "btn btn-outline-primary btn-lg" %>
   <%end %>
 
   <% if @user == current_user %>
-    <h4 class="col-4"><%= link_to "Edit Your Account", edit_user_path(@user), class: "btn btn-danger" %></h4>
+    <h4 class="col-4"><%= link_to "Edit Your Account", edit_user_path(@user), class: "btn btn-outline-secondary" %></h4>
   <%end %>
 </div>
 </div>

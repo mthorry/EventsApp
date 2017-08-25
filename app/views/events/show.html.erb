@@ -25,11 +25,14 @@
 
 
 <h3>Attending:</h3>
-<ul>
-<% @event.users.each do |user| %>
-<li> <%= link_to user.first_name, user_path(user) %> </li>
-<%end%>
-</ul>
+  <div class="container">
+    <div class="row">
+      <% @event.users.each do |user| %>
+      <a href=<%=user_path(user.id)%>><img src=<%=user.img%> id="mini-img"></a>
+      <%end%>
+
+</div>
+</div>
 </span>
 <br>
 
@@ -43,7 +46,7 @@
 </iframe>
 
 </div>
-<h3><%=link_to "Events", events_path %></h3>
+<h3><%=link_to "All Events", events_path, class: "btn btn-outline-primary btn-lg" %></h3>
 
 <!-- <p><%=link_to "Edit", edit_event_path(@event) %></p> -->
 

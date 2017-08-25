@@ -1,9 +1,40 @@
+<div class="container">
 <h1><%= @category.name.capitalize %> Events</h1>
 <ul>
+  <div class="row">
 <% @events.each do |event| %>
-  <li><%= link_to event.name, event_path(event) %>:
-  <p><%=link_to "#{TheDate.format_date(event.the_date.date_time)}"%> in <%= link_to event.location.name, location_path(event.location) %></p></li>
-<%end%>
-</ul>
-<br>
-<h4><%= link_to "All Categories", categories_path %></h4>
+<% if !current_user.events.include?(event) %>
+      <div class="col-sm-2">
+       <div class="card" id="card-padding">
+        <img class="card-img-top" src=<%=event.img%>>
+        <div class="card-body">
+          <h4><%= link_to event.name, event_path(event), class: "card-title" %></h4>
+          <p class="card-text">
+            <p><strong>Date:</strong> <%= link_to TheDate.format_date(event.the_date.date_time), the_date_path(event.the_date) %></p>
+            <p><strong>Location:</strong> <%= event.location.name %></p>
+          </p>
+        <%= link_to 'Add to my events', addevent_path(event), :method => :post, class: "btn btn-outline-primary"%>
+        <p></p>
+        <%= link_to "Buy Tickets", event.url, class: "btn btn-outline-success"%>
+      </div>
+    </div>
+    </div>
+    <% else %>
+          <div class="col-sm-2">
+       <div class="card" id="card-padding">
+        <img class="card-img-top" src=<%=event.img%>>
+        <div class="card-body">
+          <h4><%= link_to event.name, event_path(event), class: "card-title" %></h4>
+          <p class="card-text">
+            <p><strong>Date:</strong> <%= link_to TheDate.format_date(event.the_date.date_time), the_date_path(event.the_date) %></p>
+            <p><strong>Location:</strong> <%= event.location.name %></p>
+          </p>
+        <%= link_to "You're Attending", addevent_path(event), :method => :post, class: "btn btn-success"%>
+        <br>
+      </div>
+    </div>
+    </div>
+        <%end%>
+     <%end%>
+</div>
+</div>

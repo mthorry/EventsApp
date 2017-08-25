@@ -13,8 +13,10 @@
  *= require_tree .
  *= require_self
  */
+@import url(http://fonts.googleapis.com/css?family=Playfair-Display|Lobster-Regular);
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 
 .container {
 h1, h2, h3, h4  {

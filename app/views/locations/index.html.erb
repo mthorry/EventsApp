@@ -1,6 +1,17 @@
+<div class="container">
+
 <h1>Locations</h1>
-<ol>
+<div class="row">
   <% @locations.each do |location| %>
-  <li><%= link_to location.name, location_path(location) %></li>
-  <% end %>
-</ol>
+  <div class="col-sm-8">
+       <div class="card" id="card-padding">
+        <img class="card-img-top" src=<%=location.img%>>
+        <div class="card-body">
+          <h4><%= link_to location.name, location_path(location), class: "card-title" %></h4>
+          <p class="card-text">
+      </div>
+    </div>
+    </div>
+    <% end %>
+</div>
+</div>
