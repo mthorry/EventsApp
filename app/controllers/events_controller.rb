@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+     require 'will_paginate/array'
   def show
     @event = Event.find(params[:id])
   end
@@ -12,6 +13,7 @@ class EventsController < ApplicationController
       @events = Event.all.select do |event|
       event.name.downcase.include?(search)
     end
+      @events = @events.paginate(:page => params[:page], per_page: 10)
     else
       #.most_recent
       @events = Event.most_recent.paginate(:page => params[:page], per_page: 10)

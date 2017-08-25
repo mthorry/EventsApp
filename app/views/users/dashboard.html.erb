@@ -13,9 +13,9 @@
        <div class="card">
         <img class="card-img-top" src=<%=event.img%>>
         <div class="card-body">
-          <h4><%= link_to event.name, event_path(event), class: "card-title text-uppercase" %></h4>
+          <h4><%= friend.first_name %>'s Going </h4><h4> <%= link_to event.name, event_path(event), class: "card-title text-uppercase" %></h4>
           <p class="card-text">
-            <p><strong>Date:</strong> <%= TheDate.format_date(event.the_date.date_time) %></p>
+            <p><strong>Date:</strong> <%= link_to TheDate.format_date(event.the_date.date_time), the_date_path(event.the_date) %></p>
             <p><strong>Location:</strong> <%= event.location.name %></p>
           </p>
           <%= link_to 'Add to my events', addevent_path(event), :method => :post, class: "btn btn-outline-primary"%>
