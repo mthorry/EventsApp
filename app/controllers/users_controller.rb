@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to user_path(@user), notice: "Welcome!" }
+        format.html { redirect_to dashboard_path(@user), notice: "Welcome!" }
       else
         format.html { render :new }
       end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     end
   end
 
-def deleteevent
+  def deleteevent
     @event = Event.find(params[:id])
     current_user.delete_event(@event)
     current_user.save
