@@ -13,8 +13,8 @@
 # 50.times do
 #   User.create(first_name: "#{Faker::Name.first_name}", last_name: "#{Faker::Name.last_name}", username: "#{Faker::Internet.email}", password_digest: BCrypt::Password.create('123'), location_id: "#{Faker::Number.between(1, 3)}", bio: "#{Faker::RuPaul.quote}. #{Faker::TheFreshPrinceOfBelAir.quote}.", img: "#{Faker::Avatar.image}")
 # end
-
-# categories = %w(music comedy food art festivals_parades movies_film science sports)
+                    # 1              3    4            5
+# categories = %w(//music// null //food//art//festivals_parades// null null null)
 
 # categories.each do |cat|
 #   Category.create(name: cat)
@@ -27,30 +27,42 @@
 
 # eventful = Eventful::API.new 'GqHWFQtLLpdW8s5r'
 
-# cat = Category.find(8)
-#   results = eventful.call 'events/search',
-#                            :keywords => cat.name,
-#                            :location => "Chicago",
-#                            :page_size => 50,
-#                            :date => 'Future',
-#                            :sort_order => 'popularity'
+# cat = Category.find(5)
+#   results = eventful.call "events/search",
+#                  :keywords => cat.name,
+#                  :location => "Los Angeles",
+#                  :page_size => 50,
+#                  :date => 'Future',
+#                  :sort_order => 'popularity'
 
-#   cat_results = results['events']['event']
+# cat_results = results['events']['event']
 
-#    cat_results.each do |this_event|
-#     this_date = TheDate.find_or_create_by(date_time: this_event['start_time'])
+# cat_results.each do |this_event|
+#   this_date = TheDate.find_or_create_by(date_time: this_event['start_time'])
 
-#     e = Event.find_or_create_by(
-#       name: this_event['title'],
-#       location_id: 3,
-#       img: this_event['image']['medium']['url'],
-#       description: this_event['description'],
-#       venue: this_event['venue_name'],
-#       the_date_id: this_date.id,
-#       address: this_event['venue_address'],
-#       url: this_event['url']
-#       )
-#     e.categories << cat
-#     e.save
-#    end
+#   e = Event.find_or_create_by(
+#     name: this_event['title'],
+#     location_id: 2,
+#     img: this_event['image']['medium']['url'],
+#     description: this_event['description'],
+#     venue: this_event['venue_name'],
+#     the_date_id: this_date.id,
+#     address: this_event['venue_address'],
+#     url: this_event['url']
+#     )
+#   e.categories << cat
+#   e.save
+# end
 
+# cat = ""
+# cat_results = ""
+
+# User.all.each do |u|
+#   u.friends << [User.find("#{Faker::Number.between(5, 15)}"), User.find("#{Faker::Number.between(16, 30)}"), User.find("#{Faker::Number.between(31, 40)}"), User.find("#{Faker::Number.between(41, 55)}")]
+# end
+
+# Category.all.each do |e|
+#   num = e.id%10+1
+#   e.img = "http://lorempixel.com/400/300/nightlife/#{num}"
+#   e.save
+# end
