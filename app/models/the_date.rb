@@ -15,6 +15,11 @@ class TheDate < ApplicationRecord
     end
   end
 
+  def self.today
+   today = TheDate.all.find {|date| date.date_time.strftime("%A, %B %d, %Y") == Time.now.strftime("%A, %B %d, %Y")}
+   today.id
+  end
+
 end
 
 # <%= event.the_date.date_time.strftime("%A, %B %d, %Y") %> at <%= event.the_date.date_time.strftime("%I:%M %p") %>

@@ -33,7 +33,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <%= link_to "All Events", events_path, class: "dropdown-item" %>
-          <%= link_to "Events Today", the_date_path(134), class: "dropdown-item" %>
+          <%= link_to "Events Today", the_date_path(TheDate.today), class: "dropdown-item" %>
           <%= link_to "Events By Category", categories_path, class: "dropdown-item" %>
           <%= link_to "Events By Location", locations_path, class: "dropdown-item" %>
         </div>
