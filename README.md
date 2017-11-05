@@ -1,5 +1,5 @@
 # Let's Have Fun Together App 🎉
-"Let's Have Fun Together" is created using Ruby on Rails for the front and back ends. Users can save events that they want to attend and see which events their friends are attending. Users can also view events based on date, category or location. This project was created at Flatiron School with Hui Wang (@mypwhas9letters).
+"Let's Have Fun Together" is created using Ruby on Rails for the front and back ends. Users can save events that they want to attend and see which events their friends are attending. Users can also view events based on date, category or location. This project was created at Flatiron School by Matthew Thorry (@mthorry) and Hui Wang (@mypwhas9letters).
 
 More information about the app can be found [here](https://medium.com/@mthorry/how-to-dynamically-add-and-remove-items-with-rails-1a4210225b2).
 
