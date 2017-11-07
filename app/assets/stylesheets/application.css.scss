@@ -13,14 +13,13 @@
  *= require_tree .
  *= require_self
  */
-@import url('https://fonts.googleapis.com/css?family=Lobster|Playfair+Display');
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 
 .container {
 h1, h2, h3, h4  {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", serif;
   font-weight: bold;
 }
 p, h5 {
@@ -93,12 +92,12 @@ form {
 
 .navbar {
   font-size: 175%;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", serif;
   font-weight: 500;
 }
 
 .jumbotron {h1 {
-  font-family: "lobster-regular";
+  font-family: "Lobster", sans-serif;
 }}
 
  .digg_pagination {

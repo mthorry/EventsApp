@@ -17,9 +17,11 @@ class TheDate < ApplicationRecord
 
   def self.today
    today = TheDate.all.find {|date| date.date_time.strftime("%A, %B %d, %Y") == Time.now.strftime("%A, %B %d, %Y")}
-   today.id
+    if today
+      today.id
+    else
+      TheDate.all.first.id
+    end
   end
 
 end
-
-# <%= event.the_date.date_time.strftime("%A, %B %d, %Y") %> at <%= event.the_date.date_time.strftime("%I:%M %p") %>
